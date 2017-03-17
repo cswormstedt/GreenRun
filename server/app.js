@@ -30,7 +30,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 var userController = require('./controllers/UserController');
-var homeController = require('./controllers/homeController');
+var homeController = require('./controllers/HomeController');
 var profileController = require('./controllers/ProfileController');
 
 var weather = require('./utilities/weatherapi')
