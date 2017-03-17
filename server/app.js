@@ -42,6 +42,6 @@ app.use('/profile', profileController);
 
 
 
-server.listen(3000, function(){
+server.listen(process.env.PORT || 5000, function(){
 	console.log("yo it's Andre port 3000");
 })
