@@ -33,7 +33,6 @@ $('.remove').on('click', function(e){
 	console.log('click');
 	var button = $(e.target);
 	var id = button.data('id');
-	var favId = {mountainId: id};
 	var container = $(this).parent().parent().parent().empty()
 	
 	$.ajax({

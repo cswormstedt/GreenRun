@@ -1,5 +1,8 @@
 
+
 require('dotenv').config();
+
+
 var express    = require('express');
 var app 	   = express();
 var server     = require('http').createServer(app);
@@ -43,5 +46,7 @@ app.use('/profile', profileController);
 
 
 server.listen(process.env.PORT || 5000, function(){
+
 	console.log("yo it's Andre port 3000");
-})
+
+	console.log("yo it's Andre port 5000");

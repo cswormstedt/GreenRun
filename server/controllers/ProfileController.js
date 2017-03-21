@@ -18,7 +18,7 @@ router.get('/', function(req, res){
 					console.log(user.favoriteMountain.length, ' this is length')
 				
 				if (user.favoriteMountain.length === 0){
-					console.log(' this is hitting')
+					// console.log(' this is hitting')
 					emptyMountain = true; 
 					res.render('profile', {username: req.session.username, emptyMountain: emptyMountain});
 				}
@@ -26,12 +26,10 @@ router.get('/', function(req, res){
 					console.log('this is hitting')
 					emptyMountain = false; 
 					weather.get(user.favoriteMountain, function(favoriteMountainArray){
-			
-				
-		
-				res.render('profile', {username: req.session.username, favoriteMountainArray: favoriteMountainArray, emptyMountain: emptyMountain});
-				// res.send(apiWeather);
-			});
+						console.log(favoriteMountainArray, ' this fav mount')
+						res.render('profile', {username: req.session.username, favoriteMountainArray: favoriteMountainArray, emptyMountain: emptyMountain});
+						// res.send(apiWeather);
+					});
 
 				}
 
@@ -58,21 +56,26 @@ router.post('/', function(req,res){
 	console.log(req.body, ' this is post route for id');
 	var userId = req.session.userId
 	User.findById(userId, function(err, users){
+
 		// console.log(userId);
 		// console.log(users.favoriteMountain, ' this is user mountain')
 	
+
 		users.favoriteMountain.push(mountain);
 		// console.log(users.favoriteMountain.length, ' this is fav mountain length')
 		users.save();
 		res.render('profile', {favoriteMountain: []});
+		
 	});
 });
 
 
 router.delete('/:id', function(req, res){
 	var id = req.params.id;
+	console.log(id + " this is the id");
 	var userId = req.session.userId;
 	User.findById(userId, function(err, user){
+		console.log(userId + " this is USERID");
 	user.favoriteMountain.pull(id);
 	// console.log(user.favoriteMountain.length)
 	// console.log(user, ' this is user in delete')

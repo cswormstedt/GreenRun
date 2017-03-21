@@ -7,7 +7,7 @@ mongoose.connection.on('connected', function(){
 	console.log("connected to " + connectionString);
 });
 
-mongoose.connection.on('error', function(){
+mongoose.connection.on('error', function(error){
 	console.log("MongoDB error " + error);
 });
 
